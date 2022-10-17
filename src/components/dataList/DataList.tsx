@@ -16,7 +16,7 @@ export const DataList: React.FC<IDataList> = ({ data }) => {
           </ul>
         </div>
       ) : (
-        <p>X</p>
+        <p>No result</p>
       )}
     </>
   );
