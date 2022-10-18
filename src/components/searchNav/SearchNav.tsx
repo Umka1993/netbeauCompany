@@ -1,10 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "@emotion/styled";
 
 interface ISearchNav {
   setSearchValue: (arg: string) => void;
-  data: string[];
   searchValue: string;
+  children: ReactNode;
 }
 
 const SearchNavWrapper = styled.div`
@@ -28,22 +28,20 @@ const SearchNavWrapper = styled.div`
 `;
 
 export const SearchNav: React.FC<ISearchNav> = ({
-  setSearchValue,
-  data,
-  searchValue,
+                                                  setSearchValue,
+                                                  searchValue,
+  children,
 }) => {
   return (
     <SearchNavWrapper>
       <input
         type="text"
         placeholder={"search..."}
-        onChange={(event) => setSearchValue(event.target.value)}
+        onChange={(e) => setSearchValue(e.target.value)}
         value={searchValue}
       />
 
-      {!data.length && (
-        <button onClick={() => setSearchValue("")}>clear</button>
-      )}
+      {children}
     </SearchNavWrapper>
   );
 };
